@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     ArrayList<String> col1 = new ArrayList<>();
     ArrayList<String> col2 = new ArrayList<>();
 
+    int init=0;
 
     TextView tvFajrAzan, tvFajrIqamah;
     TextView tvDuhrAzan, tvDuhrIqamah;
@@ -113,7 +114,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
         //calling the website by default
+
         getWebsite();
+
         renderFromStorage();
 
     }
@@ -180,6 +183,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                         setToStorage(col0, col1, col2);
 
+                        if(init!=0)
                         Toast.makeText(MainActivity.this, "Up to date!", Toast.LENGTH_SHORT).show();
 
                     }
@@ -248,6 +252,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         if (TextUtils.isEmpty(fajrAzan)) {
             //so things are not previously called; call the server
+            Toast.makeText(this, "Downloading data...", Toast.LENGTH_SHORT).show();
+            init++;
             getWebsite();
         } else {
             //now setting things here cz we have data
@@ -299,6 +305,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
             getWebsite();
+            init++;
             Toast.makeText(this, "Syncing online...", Toast.LENGTH_LONG).show();
             return true;
         }
