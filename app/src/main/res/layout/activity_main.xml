@@ -1,26 +1,454 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/scrollView1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:fillViewport="true">
 
-    <Button
-        android:id="@+id/getBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Get website"
-        android:layout_marginTop="50dp"
-        android:layout_centerHorizontal="true"/>
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Result ..."
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/getBtn"
-        android:textSize="17sp"/>
-</RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <!--fajr-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="2dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:textColor="@android:color/white"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="PRAYER" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="AZAN"
+                android:textColor="@android:color/white"
+                android:background="@color/colorPrimary"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_margin="1dp"
+                android:text="IQAMAH"
+                android:textColor="@android:color/white"
+                android:background="@color/colorPrimary"
+
+                android:gravity="center"
+                android:layout_weight="1" />
+
+            <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:textColor="@android:color/white"
+                android:background="@color/colorPrimary"
+                android:padding="9.5dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="NOTIFY" />
+        </LinearLayout>
+
+        <!--fajr-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="2dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:text="FAJR" />
+
+            <TextView
+                android:id="@+id/fajr_azan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+
+                android:background="#f1f1f1" />
+
+            <TextView
+                android:id="@+id/fajr_iqamah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+
+                android:background="#f1f1f1" />
+
+            <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:background="#f1f1f1"
+                android:text="set alarm" />
+        </LinearLayout>
+
+        <!--sunrise-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="2dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1d1"
+                android:gravity="center"
+                android:padding="10dp"
+
+                android:text="====sunrise====" />
+
+        </LinearLayout>
+
+        <!--    duhr-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="2dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:padding="10dp"
+                android:gravity="center"
+                android:text="DUHR" />
+
+            <TextView
+                android:id="@+id/duhr_azan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+
+                android:background="#f1f1f1"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/duhr_iqamah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"                android:padding="10dp"
+
+                android:background="#f1f1f1"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:text="set alarm" />
+        </LinearLayout>
+
+        <!--    asr-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="2dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"                android:padding="10dp"
+
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:text="ASR" />
+
+            <TextView
+                android:id="@+id/asr_azan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"                android:padding="10dp"
+
+                android:background="#f1f1f1"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/asr_iqamah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:background="#f1f1f1"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:text="set alarm" />
+        </LinearLayout>
+
+
+        <!--    maghrib-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="2dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:text="maghrib" />
+
+            <TextView
+                android:id="@+id/maghrib_azan"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/maghrib_iqamah"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:padding="10dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:text="set alarm" />
+        </LinearLayout>
+
+        <!--    isha-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="2dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:padding="10dp"
+                android:gravity="center"
+                android:text="ISHA" />
+
+            <TextView
+                android:id="@+id/isha_azan"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/isha_iqamah"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:text="set alarm" />
+        </LinearLayout>
+
+        <!--    juma-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="2dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:text="JUMA" />
+
+            <TextView
+                android:id="@+id/juma_azan"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/juma_iqamah"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:text="set alarm" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="2dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:id="@+id/note"
+                android:text="====note====" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="Result ..."
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/getBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/result"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="Get website" />
+
+    </LinearLayout>
+
+
+</ScrollView>
