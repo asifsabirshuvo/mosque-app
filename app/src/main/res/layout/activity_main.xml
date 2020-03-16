@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-
 
 
     <LinearLayout
@@ -25,49 +25,49 @@
             android:weightSum="4">
 
             <TextView
-                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:textColor="@android:color/white"
                 android:background="@color/colorPrimary"
                 android:gravity="center"
-                android:text="PRAYER" />
+                android:padding="10dp"
+                android:text="PRAYER"
+                android:textColor="@android:color/white" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:padding="10dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:padding="10dp"
                 android:text="AZAN"
-                android:textColor="@android:color/white"
-                android:background="@color/colorPrimary"
-                android:gravity="center" />
+                android:textColor="@android:color/white" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_margin="1dp"
-                android:text="IQAMAH"
-                android:textColor="@android:color/white"
-                android:background="@color/colorPrimary"
-
-                android:gravity="center"
-                android:layout_weight="1" />
-
-            <TextView
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:textColor="@android:color/white"
-                android:background="@color/colorPrimary"
-                android:padding="9.5dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:text="NOTIFY" />
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:padding="10dp"
+
+                android:text="IQAMAH"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:padding="9.5dp"
+                android:text="NOTIFY"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <!--fajr-->
@@ -85,9 +85,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:padding="10dp"
                 android:background="#f1f1f1"
                 android:gravity="center"
+                android:padding="10dp"
                 android:text="FAJR" />
 
             <TextView
@@ -96,9 +96,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:padding="10dp"
+                android:background="#f1f1f1"
 
-                android:background="#f1f1f1" />
+                android:padding="10dp" />
 
             <TextView
                 android:id="@+id/fajr_iqamah"
@@ -106,18 +106,18 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:padding="10dp"
+                android:background="#f1f1f1"
 
-                android:background="#f1f1f1" />
+                android:padding="10dp" />
 
             <TextView
-                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:padding="10dp"
                 android:background="#f1f1f1"
+                android:gravity="center"
+                android:padding="10dp"
                 android:text="set alarm" />
         </LinearLayout>
 
@@ -126,21 +126,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="2dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="2dp"
+            android:background="#f1f1d1"
+            android:gravity="center"
             android:orientation="horizontal"
+            android:padding="5dp"
             android:weightSum="4">
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/sunrise"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:background="#f1f1d1"
+                android:drawableLeft="@drawable/sun"
                 android:gravity="center"
-                android:padding="10dp"
-
                 android:text="====sunrise====" />
 
         </LinearLayout>
@@ -161,8 +164,8 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
-                android:padding="10dp"
                 android:gravity="center"
+                android:padding="10dp"
                 android:text="DUHR" />
 
             <TextView
@@ -171,30 +174,31 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:padding="10dp"
-
                 android:background="#f1f1f1"
-                android:gravity="center" />
+
+                android:gravity="center"
+                android:padding="10dp" />
 
             <TextView
                 android:id="@+id/duhr_iqamah"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:layout_weight="1"                android:padding="10dp"
-
+                android:layout_weight="1"
                 android:background="#f1f1f1"
-                android:gravity="center" />
+
+                android:gravity="center"
+                android:padding="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:padding="10dp"
-
                 android:background="#f1f1f1"
+
                 android:gravity="center"
+                android:padding="10dp"
                 android:text="set alarm" />
         </LinearLayout>
 
@@ -212,21 +216,59 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:layout_weight="1"                android:padding="10dp"
-
+                android:layout_weight="1"
                 android:background="#f1f1f1"
+
                 android:gravity="center"
+                android:paddingTop="33dp"
+                android:paddingBottom="34dp"
                 android:text="ASR" />
 
-            <TextView
-                android:id="@+id/asr_azan"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"                android:padding="10dp"
-
+                android:layout_weight="1"
+                android:layout_marginTop="1.5dp"
                 android:background="#f1f1f1"
-                android:gravity="center" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/darker_gray"
+                    android:gravity="center"
+                    android:text="sunni"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/asr_azan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="#f1f1f1"
+                    android:padding="1.5dp"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/darker_gray"
+                    android:gravity="center"
+                    android:text="hanafi"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/asr_azan_hanafi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:padding="1.5dp"
+                    android:background="#f1f1f1"
+                    android:gravity="center"/>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/asr_iqamah"
@@ -234,18 +276,20 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:padding="10dp"
                 android:background="#f1f1f1"
-                android:gravity="center" />
+                android:gravity="center"
+                android:paddingTop="34dp"
+                android:paddingBottom="35dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:padding="10dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
                 android:gravity="center"
+                android:paddingTop="34dp"
+                android:paddingBottom="35dp"
                 android:text="set alarm" />
         </LinearLayout>
 
@@ -263,42 +307,42 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:padding="10dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
                 android:gravity="center"
+                android:padding="10dp"
                 android:text="maghrib" />
 
             <TextView
                 android:id="@+id/maghrib_azan"
                 android:layout_width="match_parent"
-                android:padding="10dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#f1f1f1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/maghrib_iqamah"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#f1f1f1"
-                android:gravity="center" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:padding="10dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
                 android:gravity="center"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/maghrib_iqamah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:padding="10dp"
                 android:text="set alarm" />
         </LinearLayout>
 
@@ -318,38 +362,38 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
-                android:padding="10dp"
                 android:gravity="center"
+                android:padding="10dp"
                 android:text="ISHA" />
 
             <TextView
                 android:id="@+id/isha_azan"
                 android:layout_width="match_parent"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#f1f1f1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/isha_iqamah"
-                android:layout_width="match_parent"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#f1f1f1"
-                android:gravity="center" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:padding="10dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
                 android:gravity="center"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/isha_iqamah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:padding="10dp"
                 android:text="set alarm" />
         </LinearLayout>
 
@@ -368,41 +412,41 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
                 android:gravity="center"
+                android:padding="10dp"
                 android:text="JUMA" />
 
             <TextView
                 android:id="@+id/juma_azan"
-                android:padding="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#f1f1f1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/juma_iqamah"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="#f1f1f1"
-                android:gravity="center" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:padding="10dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
                 android:gravity="center"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/juma_iqamah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="#f1f1f1"
+                android:gravity="center"
+                android:padding="10dp"
                 android:text="set alarm" />
         </LinearLayout>
 
@@ -417,14 +461,15 @@
             android:weightSum="4">
 
             <TextView
+                android:id="@+id/note"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
                 android:gravity="center"
+                android:drawableLeft="@drawable/speaker"
                 android:padding="10dp"
-                android:id="@+id/note"
                 android:text="====note====" />
 
         </LinearLayout>
