@@ -107,18 +107,21 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
-
                 android:padding="10dp" />
 
-            <TextView
+            <Spinner
+                android:id="@+id/fajr_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="set alarm" />
+                android:textAlignment="center"
+                android:paddingTop="8dp"
+                android:paddingBottom="9dp"
+                android:spinnerMode="dropdown" />
+
+
         </LinearLayout>
 
         <!--sunrise-->
@@ -190,16 +193,17 @@
                 android:gravity="center"
                 android:padding="10dp" />
 
-            <TextView
+            <Spinner
+                android:id="@+id/duhr_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
-
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="set alarm" />
+                android:textAlignment="center"
+                android:paddingTop="8dp"
+                android:paddingBottom="9dp"
+                android:spinnerMode="dropdown" />
         </LinearLayout>
 
         <!--    asr-->
@@ -227,8 +231,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4.5dp"
                 android:layout_weight="1"
-                android:layout_marginTop="1.5dp"
                 android:background="#f1f1f1"
                 android:orientation="vertical">
 
@@ -247,8 +251,8 @@
                     android:layout_margin="1dp"
                     android:layout_weight="1"
                     android:background="#f1f1f1"
-                    android:padding="1.5dp"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:padding="1.5dp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -264,9 +268,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="1.5dp"
                     android:background="#f1f1f1"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:padding="1.5dp" />
 
             </LinearLayout>
 
@@ -281,16 +285,19 @@
                 android:paddingTop="34dp"
                 android:paddingBottom="35dp" />
 
-            <TextView
+            <Spinner
+                android:id="@+id/asr_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="3.5dp"
+                android:layout_marginRight="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
-                android:gravity="center"
-                android:paddingTop="34dp"
-                android:paddingBottom="35dp"
-                android:text="set alarm" />
+                android:textAlignment="center"
+                android:paddingTop="35dp"
+                android:paddingBottom="31dp"
+                android:spinnerMode="dropdown" />>
         </LinearLayout>
 
 
@@ -335,15 +342,17 @@
                 android:gravity="center"
                 android:padding="10dp" />
 
-            <TextView
+            <Spinner
+                android:id="@+id/maghrib_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="set alarm" />
+                android:textAlignment="center"
+                android:paddingTop="8dp"
+                android:paddingBottom="9dp"
+                android:spinnerMode="dropdown" />
         </LinearLayout>
 
         <!--    isha-->
@@ -386,15 +395,17 @@
                 android:gravity="center"
                 android:padding="10dp" />
 
-            <TextView
+            <Spinner
+                android:id="@+id/isha_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="set alarm" />
+                android:textAlignment="center"
+                android:paddingTop="8dp"
+                android:paddingBottom="9dp"
+                android:spinnerMode="dropdown" />
         </LinearLayout>
 
         <!--    juma-->
@@ -439,15 +450,17 @@
                 android:gravity="center"
                 android:padding="10dp" />
 
-            <TextView
+            <Spinner
+                android:id="@+id/juma_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="set alarm" />
+                android:textAlignment="center"
+                android:paddingTop="8dp"
+                android:paddingBottom="9dp"
+                android:spinnerMode="dropdown" />
         </LinearLayout>
 
 
@@ -467,8 +480,8 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="#f1f1f1"
-                android:gravity="center"
                 android:drawableLeft="@drawable/speaker"
+                android:gravity="center"
                 android:padding="10dp"
                 android:text="note" />
 
