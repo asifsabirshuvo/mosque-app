@@ -1,7 +1,17 @@
 package com.recipeworld.mosqueapp;
 
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
@@ -25,10 +35,15 @@ import org.jsoup.select.Elements;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -36,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     ArrayList<String> col1 = new ArrayList<>();
     ArrayList<String> col2 = new ArrayList<>();
 
-    int init=0;
+    int init = 0;
 
     TextView tvFajrAzan, tvFajrIqamah;
     TextView tvDuhrAzan, tvDuhrIqamah;
@@ -91,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
+        categories.add("NONE");
         categories.add("5 min");
         categories.add("10 min");
         categories.add("15 min");
@@ -116,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //calling the website by default
 
         getWebsite();
+        ScheduleDailyN("asd",2);
 
         renderFromStorage();
 
@@ -123,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
     private void getWebsite() {
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -183,8 +201,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                         setToStorage(col0, col1, col2);
 
-                        if(init!=0)
-                        Toast.makeText(MainActivity.this, "Up to date!", Toast.LENGTH_SHORT).show();
+                        if (init != 0)
+                            Toast.makeText(MainActivity.this, "Up to date!", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -358,5 +376,28 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
+
+
+    public void ScheduleDailyN(String time, int beforeIndex) {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 10);
+        calendar.set(Calendar.MINUTE, 33);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.AM_PM,Calendar.PM);
+
+
+
+        Intent intent = new Intent(this, BroadCastClass.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this.getApplicationContext(), (int) Math.random() * 10000, intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis()
+                , 24 * 60 * 60 * 1000, pendingIntent);
+
+    }
+
+
 
 }

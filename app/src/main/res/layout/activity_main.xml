@@ -319,8 +319,9 @@
                 android:layout_weight="1"
                 android:background="#f1f1f1"
                 android:gravity="center"
+                android:textSize="14dp"
                 android:padding="10dp"
-                android:text="maghrib" />
+                android:text="MAGHRIB" />
 
             <TextView
                 android:id="@+id/maghrib_azan"
