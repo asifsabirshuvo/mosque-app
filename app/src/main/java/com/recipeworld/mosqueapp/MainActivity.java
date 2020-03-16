@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
     TextView tvNote,tvSunrise;
 
 
-    private Button getBtn;
-    private TextView result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,21 +65,13 @@ public class MainActivity extends AppCompatActivity {
         tvNote= (TextView) findViewById(R.id.note);
         tvSunrise = (TextView)findViewById(R.id.sunrise);
 
-        result = (TextView) findViewById(R.id.result);
-        getBtn = (Button) findViewById(R.id.getBtn);
 
         //calling the website by default
         getWebsite();
 
         renderFromStorage();
 
-        getBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getWebsite();
-            }
-        });
-    }
+     }
 
     private void getWebsite() {
         new Thread(new Runnable() {
@@ -110,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
                                 col2.add(cols.get(k).text());
                         }
 
-                        downServers.add(cols.text());
 
                     }
 
@@ -122,12 +113,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 
-                        String ss = "";
-                        for (String x : downServers
-                        ) {
-                            ss = ss + "\n" + x;
-                        }
-                        result.setText(ss);
 
                         Log.d("xx", String.valueOf(col0.size()));
                         Log.d("xx", String.valueOf(col1.size()));
@@ -148,6 +133,8 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         setToStorage(col0,col1,col2);
+
+                        Toast.makeText(MainActivity.this, "Up to date!", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -178,6 +165,8 @@ public class MainActivity extends AppCompatActivity {
 
         editor.putString("note", col0.get(col0.size() - 1));
         editor.apply();
+
+
 
         //now render
         renderFromStorage();
@@ -251,7 +240,8 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
-            Toast.makeText(this, "refresh", Toast.LENGTH_SHORT).show();
+            getWebsite();
+            Toast.makeText(this, "Syncing online...", Toast.LENGTH_LONG).show();
             return true;
         }
         return super.onOptionsItemSelected(item);

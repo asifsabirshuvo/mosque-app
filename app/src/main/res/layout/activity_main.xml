@@ -144,7 +144,7 @@
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/sun"
                 android:gravity="center"
-                android:text="====sunrise====" />
+                android:text="sunrise" />
 
         </LinearLayout>
 
@@ -470,28 +470,9 @@
                 android:gravity="center"
                 android:drawableLeft="@drawable/speaker"
                 android:padding="10dp"
-                android:text="====note====" />
+                android:text="note" />
 
         </LinearLayout>
-
-
-        <TextView
-            android:id="@+id/result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:text="Result ..."
-            android:textSize="17sp" />
-
-        <Button
-            android:id="@+id/getBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/result"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:text="Get website" />
 
     </LinearLayout>
 
