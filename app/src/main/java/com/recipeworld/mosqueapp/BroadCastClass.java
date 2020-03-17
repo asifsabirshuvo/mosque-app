@@ -21,15 +21,21 @@ public class BroadCastClass extends BroadcastReceiver {
 
     public void onReceive(Context context, Intent intent) {
 
-        Toast.makeText(context, "Prayer time", Toast.LENGTH_LONG).show();
         mp = MediaPlayer.create(context, R.raw.inflicted);
         mp.start();
 
+        String pName = intent.getStringExtra("pName");
+
+        Toast.makeText(context, pName + " time!", Toast.LENGTH_LONG).show();
+
         //build notification
-        showNotification(context);
+        showNotification(context, pName);
+
     }
 
-    private  void showNotification(Context context){
+
+
+    private void showNotification(Context context, String prayername) {
         NotificationManager mNotificationManager;
 
         NotificationCompat.Builder mBuilder =
@@ -43,8 +49,8 @@ public class BroadCastClass extends BroadcastReceiver {
 
         mBuilder.setContentIntent(pendingIntent);
         mBuilder.setSmallIcon(R.mipmap.ic_launcher_round);
-        mBuilder.setContentTitle("Prayer time!");
-        mBuilder.setContentText("Please go to mosque...");
+        mBuilder.setContentTitle(prayername + " time!");
+        mBuilder.setContentText(prayername + " time!");
         mBuilder.setPriority(Notification.PRIORITY_MAX);
         mBuilder.setStyle(bigText);
 
@@ -53,8 +59,7 @@ public class BroadCastClass extends BroadcastReceiver {
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
 // === Removed some obsoletes
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-        {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String channelId = "Your_channel_id";
             NotificationChannel channel = new NotificationChannel(
                     channelId,
