@@ -14,20 +14,28 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".MainActivity">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:text="masjid madeena"
+            android:textColor="@android:color/white"
+            android:padding="10dp"
+            android:gravity="center"
 
+            />
         <!--fajr-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="2dp"
             android:orientation="horizontal"
             android:weightSum="3">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="41dp"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
@@ -67,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="2dp"
             android:orientation="horizontal"
             android:weightSum="3">
@@ -112,7 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="2dp"
             android:background="#f1f1d1"
             android:gravity="center"
@@ -136,7 +144,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="2dp"
             android:orientation="horizontal"
             android:weightSum="3">
@@ -181,7 +189,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="2dp"
             android:orientation="horizontal"
             android:weightSum="3">
@@ -265,7 +273,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="2dp"
             android:orientation="horizontal"
             android:weightSum="3">
@@ -309,7 +317,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="2dp"
             android:orientation="horizontal"
             android:weightSum="3">
@@ -354,7 +362,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
 
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="2dp"
             android:orientation="horizontal"
             android:weightSum="3">
@@ -397,7 +405,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="2dp"
             android:orientation="horizontal">
 
@@ -414,7 +422,26 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:text="sammamish mosque"
+            android:textColor="@android:color/white"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
 
+            />
+        <WebView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/webView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true" />
     </LinearLayout>
 
 

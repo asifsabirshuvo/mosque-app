@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity{
     TextView tvJumaAzan, tvJumaIqamah;
     TextView tvNote, tvSunrise;
 
+    WebView wv1;
 
 
     @Override
@@ -68,6 +70,14 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        wv1=(WebView)findViewById(R.id.webView);
+        wv1.setWebViewClient(new MyBrowser());
+
+
+        wv1.getSettings().setLoadsImagesAutomatically(true);
+        wv1.getSettings().setJavaScriptEnabled(true);
+        wv1.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        wv1.loadUrl("http://www.muslimfeed.com/timesframe.aspx?mi=2110&bc=FFFFFF&fc=000000&oc=FFFFFF");
 
         tvFajrAzan = (TextView) findViewById(R.id.fajr_azan);
         tvFajrIqamah = (TextView) findViewById(R.id.fajr_iqamah);
