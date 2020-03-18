@@ -12,13 +12,6 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
 
-        <receiver
-            android:name=".BroadCastClass"
-            android:enabled="true" >
-            <intent-filter>
-                <action android:name="com.recipeworld.mosqueapp.BroadCastClass" />
-            </intent-filter>
-        </receiver>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
