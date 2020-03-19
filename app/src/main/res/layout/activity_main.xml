@@ -15,12 +15,26 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
 
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pb"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:indeterminateOnly="true"
+            />
+
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/spinner_mosque"
+            android:gravity="center"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center"
             android:background="@android:color/white"
-            android:padding="5dp"
+            android:padding="4dp"
             />
         <!--fajr-->
         <LinearLayout

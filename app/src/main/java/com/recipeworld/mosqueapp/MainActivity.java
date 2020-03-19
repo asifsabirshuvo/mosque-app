@@ -5,17 +5,25 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     ArrayList<String> col0 = new ArrayList<>();
     ArrayList<String> col1 = new ArrayList<>();
@@ -28,6 +36,10 @@ public class MainActivity extends AppCompatActivity{
     TextView tvIshaAzan, tvIshaIqamah;
     TextView tvJumaAzan, tvJumaIqamah;
     TextView tvNote, tvSunrise;
+
+    ProgressBar pb;
+
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,15 +62,35 @@ public class MainActivity extends AppCompatActivity{
         tvNote = (TextView) findViewById(R.id.note);
         tvSunrise = (TextView) findViewById(R.id.sunrise);
 
-        //calling the website by default
+        pb = (ProgressBar) findViewById(R.id.pb);
 
+        // Spinner element
+        spinner = (Spinner) findViewById(R.id.spinner_mosque);
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(this);
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Masjeed Madeena");
+        categories.add("Sammamaish");
+        categories.add("Mapsred");
+        categories.add("Eastside mosque");
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
+
+
+        //calling the website by default
         getWebsite3();
 
     }
 
 
-//masjeedmadeena
+    //masjeedmadeena
     private void getWebsite0() {
+        pb.setVisibility(View.VISIBLE);
         //clearing prev data
         col0 = new ArrayList<>();
         col1 = new ArrayList<>();
@@ -103,6 +135,7 @@ public class MainActivity extends AppCompatActivity{
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        pb.setVisibility(View.INVISIBLE);
 
                         tvFajrAzan.setText(col1.get(0));
                         tvSunrise.setText("SUNRISE: " + col1.get(1));
@@ -129,13 +162,14 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-//mapsredmond
-    private void getWebsite1() {
+    //mapsredmond
+    private void getWebsite2() {
 //clearing prev data
         col0 = new ArrayList<>();
         col1 = new ArrayList<>();
         col2 = new ArrayList<>();
 
+        pb.setVisibility(View.VISIBLE);
 
         new Thread(new Runnable() {
             @Override
@@ -164,15 +198,15 @@ public class MainActivity extends AppCompatActivity{
 
                     }
 
-                    Log.d("rr",String.valueOf(col0.size()));
-                        for(String x: col0)
-                            Log.d("rr",x);
-                    Log.d("rr",String.valueOf(col1.size()));
-                        for(String x: col1)
-                            Log.d("rr",x);
-                    Log.d("rr",String.valueOf(col2.size()));
-                        for(String x: col2)
-                            Log.d("rr",x);
+                    Log.d("rr", String.valueOf(col0.size()));
+                    for (String x : col0)
+                        Log.d("rr", x);
+                    Log.d("rr", String.valueOf(col1.size()));
+                    for (String x : col1)
+                        Log.d("rr", x);
+                    Log.d("rr", String.valueOf(col2.size()));
+                    for (String x : col2)
+                        Log.d("rr", x);
 
                 } catch (IOException e) {
                     builder.append("Error : ").append(e.getMessage()).append("\n");
@@ -181,6 +215,7 @@ public class MainActivity extends AppCompatActivity{
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        pb.setVisibility(View.INVISIBLE);
 
                         tvFajrAzan.setText(col0.get(0));
                         tvSunrise.setText("SUNRISE: " + col0.get(1));
@@ -197,8 +232,8 @@ public class MainActivity extends AppCompatActivity{
                         tvMaghribIqamah.setText(col1.get(3));
                         tvIshaIqamah.setText(col1.get(4));
 
-                        if(col1.size()>5)
-                        tvJumaIqamah.setText(col1.get(5));
+                        if (col1.size() > 5)
+                            tvJumaIqamah.setText(col1.get(5));
 
 
                         tvNote.setVisibility(View.GONE);
@@ -210,12 +245,13 @@ public class MainActivity extends AppCompatActivity{
 
 
     //sammamaish
-    private void getWebsite2() {
+    private void getWebsite1() {
 //clearing prev data
         col0 = new ArrayList<>();
         col1 = new ArrayList<>();
         col2 = new ArrayList<>();
 
+        pb.setVisibility(View.VISIBLE);
 
         new Thread(new Runnable() {
             @Override
@@ -244,15 +280,15 @@ public class MainActivity extends AppCompatActivity{
 
                     }
 
-                    Log.d("rr",String.valueOf(col0.size()));
-                    for(String x: col0)
-                        Log.d("rr",x);
-                    Log.d("rr",String.valueOf(col1.size()));
-                    for(String x: col1)
-                        Log.d("rr",x);
-                    Log.d("rr",String.valueOf(col2.size()));
-                    for(String x: col2)
-                        Log.d("rr",x);
+                    Log.d("rr", String.valueOf(col0.size()));
+                    for (String x : col0)
+                        Log.d("rr", x);
+                    Log.d("rr", String.valueOf(col1.size()));
+                    for (String x : col1)
+                        Log.d("rr", x);
+                    Log.d("rr", String.valueOf(col2.size()));
+                    for (String x : col2)
+                        Log.d("rr", x);
 
                 } catch (IOException e) {
                     builder.append("Error : ").append(e.getMessage()).append("\n");
@@ -261,6 +297,7 @@ public class MainActivity extends AppCompatActivity{
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        pb.setVisibility(View.INVISIBLE);
 
                         tvFajrAzan.setText(col0.get(0));
                         tvSunrise.setText("SUNRISE: " + col0.get(1));
@@ -288,8 +325,10 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-    //masjeedmadeena
+    //east side mosque
     private void getWebsite3() {
+        pb.setVisibility(View.VISIBLE);
+
         //clearing prev data
         col0 = new ArrayList<>();
         col1 = new ArrayList<>();
@@ -351,16 +390,18 @@ public class MainActivity extends AppCompatActivity{
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        pb.setVisibility(View.INVISIBLE);
 
-                        Log.d("rr",String.valueOf("==================="));
-                        for(String x: col0)
-                            Log.d("rr",x);
-                        Log.d("rr",String.valueOf("==================="));
-                        for(String x: col1)
-                            Log.d("rr",x);
-                        Log.d("rr",String.valueOf("==================="));
-                        for(String x: col2)
-                            Log.d("rr",x);
+
+                        Log.d("rr", String.valueOf("==================="));
+                        for (String x : col0)
+                            Log.d("rr", x);
+                        Log.d("rr", String.valueOf("==================="));
+                        for (String x : col1)
+                            Log.d("rr", x);
+                        Log.d("rr", String.valueOf("==================="));
+                        for (String x : col2)
+                            Log.d("rr", x);
 
                         tvFajrAzan.setText(col1.get(0));
                         tvSunrise.setText("SUNRISE: " + col1.get(1));
@@ -378,8 +419,8 @@ public class MainActivity extends AppCompatActivity{
                         tvIshaIqamah.setText(col2.get(5));
                         tvJumaIqamah.setText("see note");
 
-                        tvNote.setText("---- JUMA IQAMAH ----"+"\n"+nt.get(0)+" : "+nt.get(1)+"\n"+
-                                nt.get(2)+" : "+nt.get(3));
+                        tvNote.setText("---- JUMA IQAMAH ----" + "\n" + nt.get(0) + " : " + nt.get(1) + "\n" +
+                                nt.get(2) + " : " + nt.get(3));
 
                         tvNote.setVisibility(View.VISIBLE);
 
@@ -388,8 +429,6 @@ public class MainActivity extends AppCompatActivity{
             }
         }).start();
     }
-
-
 
 
     @Override
@@ -413,4 +452,21 @@ public class MainActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        if (position == 0)
+            getWebsite0();
+        else if (position == 1)
+            getWebsite1();
+        else if (position == 2)
+            getWebsite2();
+        else if (position == 3)
+            getWebsite3();
+
+    }
+
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
+    }
 }
