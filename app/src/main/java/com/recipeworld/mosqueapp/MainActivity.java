@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import org.jsoup.Jsoup;
@@ -51,12 +52,18 @@ public class MainActivity extends AppCompatActivity{
 
         //calling the website by default
 
-        getWebsite2();
+        getWebsite3();
 
     }
 
 
-    private void getWebsite() {
+//masjeedmadeena
+    private void getWebsite0() {
+        //clearing prev data
+        col0 = new ArrayList<>();
+        col1 = new ArrayList<>();
+        col2 = new ArrayList<>();
+
 
         new Thread(new Runnable() {
             @Override
@@ -113,6 +120,7 @@ public class MainActivity extends AppCompatActivity{
                         tvJumaIqamah.setText(col1.get(5));
                         tvNote.setText(col0.get(col0.size() - 1));
 
+                        tvNote.setVisibility(View.VISIBLE);
 
                     }
                 });
@@ -121,8 +129,13 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
+//mapsredmond
+    private void getWebsite1() {
+//clearing prev data
+        col0 = new ArrayList<>();
+        col1 = new ArrayList<>();
+        col2 = new ArrayList<>();
 
-    private void getWebsite2() {
 
         new Thread(new Runnable() {
             @Override
@@ -188,6 +201,7 @@ public class MainActivity extends AppCompatActivity{
                         tvJumaIqamah.setText(col1.get(5));
 
 
+                        tvNote.setVisibility(View.GONE);
                     }
                 });
             }
@@ -195,10 +209,185 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
+    //sammamaish
+    private void getWebsite2() {
+//clearing prev data
+        col0 = new ArrayList<>();
+        col1 = new ArrayList<>();
+        col2 = new ArrayList<>();
 
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final StringBuilder builder = new StringBuilder();
+
+                try {
+                    Document doc = Jsoup.connect("    http://www.muslimfeed.com/timesframe.aspx?mi=2110&bc=FFFFFF&fc=000000&oc=FFFFFF").get();
+                    Element table = doc.getElementsByTag("tbody").get(0);
+//                    Log.d("doc",String.valueOf(table));
+
+                    Elements rows = table.select("tr");
+
+                    for (int i = 1; i < rows.size(); i++) { //first row is the col names so skip it.
+                        Element row = rows.get(i);
+                        Elements cols = row.select("td");
+
+                        for (int k = 0; k < cols.size(); k++) {
+                            if (k == 0)
+                                col0.add(cols.get(k).text());
+                            if (k == 1)
+                                col1.add(cols.get(k).text());
+                            if (k == 2)
+                                col2.add(cols.get(k).text());
+                        }
+
+                    }
+
+                    Log.d("rr",String.valueOf(col0.size()));
+                    for(String x: col0)
+                        Log.d("rr",x);
+                    Log.d("rr",String.valueOf(col1.size()));
+                    for(String x: col1)
+                        Log.d("rr",x);
+                    Log.d("rr",String.valueOf(col2.size()));
+                    for(String x: col2)
+                        Log.d("rr",x);
+
+                } catch (IOException e) {
+                    builder.append("Error : ").append(e.getMessage()).append("\n");
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        tvFajrAzan.setText(col0.get(0));
+                        tvSunrise.setText("SUNRISE: " + col0.get(1));
+                        tvDuhrAzan.setText(col0.get(2));
+                        tvAsrAzan.setText(col0.get(3));
+                        tvAsrAzanHanafi.setText(col0.get(3));
+                        tvMaghribAzan.setText(col0.get(5));
+                        tvIshaAzan.setText(col0.get(6));
+                        tvJumaAzan.setText(col0.get(7));
+
+                        tvFajrIqamah.setText(col1.get(0));
+                        tvDuhrIqamah.setText(col1.get(2));
+                        tvAsrIqamah.setText(col1.get(3));
+                        //COL1-4 IS SUNSET HERE
+                        tvMaghribIqamah.setText(col1.get(5));
+                        tvIshaIqamah.setText(col1.get(6));
+                        tvJumaIqamah.setText(col1.get(7));
 
 
+                        tvNote.setVisibility(View.GONE);
+                    }
+                });
+            }
+        }).start();
+    }
+
+
+    //masjeedmadeena
+    private void getWebsite3() {
+        //clearing prev data
+        col0 = new ArrayList<>();
+        col1 = new ArrayList<>();
+        col2 = new ArrayList<>();
+
+        final ArrayList<String> nt = new ArrayList<>();
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final StringBuilder builder = new StringBuilder();
+
+                try {
+                    Document doc = Jsoup.connect("https://www.eastsidemosque.com/").get();
+                    Element table = doc.getElementsByTag("tbody").get(0);
+
+
+                    Elements rows = table.select("tr");
+
+
+                    for (int i = 0; i < rows.size(); i++) { //first row is the col names so skip it.
+                        Element row = rows.get(i);
+                        Elements cols = row.select("td");
+
+                        for (int k = 0; k < cols.size(); k++) {
+                            if (k == 0)
+                                col0.add(cols.get(k).text());
+                            if (k == 1)
+                                col1.add(cols.get(k).text());
+                            if (k == 2)
+                                col2.add(cols.get(k).text());
+                        }
+                    }
+
+
+//juma is on table2 so catch that too
+                    Element table2 = doc.getElementsByTag("tbody").get(1);
+
+                    Elements rows2 = table2.select("tr");
+
+
+                    for (int i = 0; i < rows2.size(); i++) { //first row is the col names so skip it.
+                        Element row = rows2.get(i);
+                        Elements cols = row.select("td");
+
+                        for (int k = 0; k < cols.size(); k++) {
+                            if (k == 0)
+                                nt.add(cols.get(k).text());
+                            if (k == 1)
+                                nt.add(cols.get(k).text());
+                        }
+                    }
+
+                } catch (IOException e) {
+                    builder.append("Error : ").append(e.getMessage()).append("\n");
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        Log.d("rr",String.valueOf("==================="));
+                        for(String x: col0)
+                            Log.d("rr",x);
+                        Log.d("rr",String.valueOf("==================="));
+                        for(String x: col1)
+                            Log.d("rr",x);
+                        Log.d("rr",String.valueOf("==================="));
+                        for(String x: col2)
+                            Log.d("rr",x);
+
+                        tvFajrAzan.setText(col1.get(0));
+                        tvSunrise.setText("SUNRISE: " + col1.get(1));
+                        tvDuhrAzan.setText(col1.get(2));
+                        tvAsrAzan.setText(col1.get(3));
+                        tvAsrAzanHanafi.setText(col1.get(4));
+                        tvMaghribAzan.setText(col1.get(5));
+                        tvIshaAzan.setText(col1.get(6));
+                        tvJumaAzan.setText(" -- ");
+
+                        tvFajrIqamah.setText(col2.get(0));
+                        tvDuhrIqamah.setText(col2.get(1));
+                        tvAsrIqamah.setText(col2.get(2));
+                        tvMaghribIqamah.setText(col2.get(4));
+                        tvIshaIqamah.setText(col2.get(5));
+                        tvJumaIqamah.setText("see note");
+
+                        tvNote.setText("---- JUMA IQAMAH ----"+"\n"+nt.get(0)+" : "+nt.get(1)+"\n"+
+                                nt.get(2)+" : "+nt.get(3));
+
+                        tvNote.setVisibility(View.VISIBLE);
+
+                    }
+                });
+            }
+        }).start();
+    }
 
 
 
@@ -217,7 +406,7 @@ public class MainActivity extends AppCompatActivity{
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
-            getWebsite();
+            getWebsite0();
             Toast.makeText(this, "Syncing online...", Toast.LENGTH_LONG).show();
             return true;
         }
