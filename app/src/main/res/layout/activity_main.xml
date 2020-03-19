@@ -14,15 +14,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".MainActivity">
-        <TextView
+
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:text="masjid madeena"
-            android:textColor="@android:color/white"
-            android:padding="10dp"
-            android:gravity="center"
-
+            android:layout_margin="10dp"
+            android:background="@android:color/white"
+            android:padding="5dp"
             />
         <!--fajr-->
         <LinearLayout
@@ -96,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:background="#f1f1f1"
 
                 android:padding="10dp" />
@@ -106,6 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:background="#f1f1f1"
                 android:padding="10dp" />
 
@@ -421,28 +421,6 @@
                 android:text="note" />
 
         </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:text="sammamish mosque"
-            android:textColor="@android:color/white"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-
-            />
-        <WebView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/webView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true" />
     </LinearLayout>
-
 
 </ScrollView>
