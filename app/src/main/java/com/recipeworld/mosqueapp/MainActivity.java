@@ -1,6 +1,8 @@
 package com.recipeworld.mosqueapp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -83,8 +85,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
         //calling the website by default
-        getWebsite3();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int mosqueKey = preferences.getInt("mosque", 0);
 
+        if (mosqueKey == 0) {
+            spinner.setSelection(mosqueKey,true);
+            getWebsite0();
+        }
+        if (mosqueKey == 1) {
+            spinner.setSelection(mosqueKey,true);
+            getWebsite1();
+        }
+        if (mosqueKey == 2) {
+            spinner.setSelection(mosqueKey,true);
+            getWebsite2();
+        }
+        if (mosqueKey == 3) {
+            spinner.setSelection(mosqueKey,true);
+            getWebsite3();
+        }
     }
 
 
@@ -445,7 +464,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
-            getWebsite0();
+
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            int mosqueKey = preferences.getInt("mosque", 0);
+
+
+            if (mosqueKey == 0) getWebsite0();
+            if (mosqueKey == 1) getWebsite1();
+            if (mosqueKey == 2) getWebsite2();
+            if (mosqueKey == 3) getWebsite3();
+
+
             Toast.makeText(this, "Syncing online...", Toast.LENGTH_LONG).show();
             return true;
         }
@@ -455,15 +484,45 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        if (position == 0)
+        if (position == 0) {
+
             getWebsite0();
-        else if (position == 1)
+
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt("mosque", 0);
+            editor.apply();
+        }
+        if (position == 1) {
+
             getWebsite1();
-        else if (position == 2)
+
+
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt("mosque", 1);
+            editor.apply();
+        }
+        if (position == 2) {
+
             getWebsite2();
-        else if (position == 3)
+
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt("mosque", 2);
+            editor.apply();
+        }
+        if (position == 3) {
+
             getWebsite3();
 
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt("mosque", 3);
+            editor.apply();
+        } else {
+            //do nothing
+        }
     }
 
     public void onNothingSelected(AdapterView<?> arg0) {
