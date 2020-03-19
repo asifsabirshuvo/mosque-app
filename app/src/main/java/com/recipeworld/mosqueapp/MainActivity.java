@@ -1,14 +1,22 @@
 package com.recipeworld.mosqueapp;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,6 +31,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -39,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     TextView tvJumaAzan, tvJumaIqamah;
     TextView tvNote, tvSunrise;
 
+    Button btnContact, btnDonate;
+
     ProgressBar pb;
 
     Spinner spinner;
@@ -47,6 +58,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        btnContact = (Button) findViewById(R.id.contact);
+        btnDonate = (Button) findViewById(R.id.donate);
 
         tvFajrAzan = (TextView) findViewById(R.id.fajr_azan);
         tvFajrIqamah = (TextView) findViewById(R.id.fajr_iqamah);
@@ -84,26 +99,90 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner.setAdapter(dataAdapter);
 
 
-        //calling the website by default
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        int mosqueKey = preferences.getInt("mosque", 0);
+        if (ConnectivityReceiver.isConnected()) {
+            //calling the website by default
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            int mosqueKey = preferences.getInt("mosque", 0);
 
-        if (mosqueKey == 0) {
-            spinner.setSelection(mosqueKey,true);
-            getWebsite0();
+            if (mosqueKey == 0) {
+                spinner.setSelection(mosqueKey, true);
+                getWebsite0();
+            }
+            if (mosqueKey == 1) {
+                spinner.setSelection(mosqueKey, true);
+                getWebsite1();
+            }
+            if (mosqueKey == 2) {
+                spinner.setSelection(mosqueKey, true);
+                getWebsite2();
+            }
+            if (mosqueKey == 3) {
+                spinner.setSelection(mosqueKey, true);
+                getWebsite3();
+            }
+        } else {
+
+            //confirm report dialog
+            final Dialog dialog = new Dialog(MainActivity.this);
+            dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+            LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            dialog.setContentView(inflater.inflate(R.layout.dialog, null));
+            dialog.setCancelable(false);
+            dialog.show();
+            Button btnRetry = (Button) dialog.findViewById(R.id.btn_retry);
+            btnRetry.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (ConnectivityReceiver.isConnected()) {
+                        //calling the website by default
+                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                        int mosqueKey = preferences.getInt("mosque", 0);
+
+                        if (mosqueKey == 0) {
+                            spinner.setSelection(mosqueKey, true);
+                            getWebsite0();
+                        }
+                        if (mosqueKey == 1) {
+                            spinner.setSelection(mosqueKey, true);
+                            getWebsite1();
+                        }
+                        if (mosqueKey == 2) {
+                            spinner.setSelection(mosqueKey, true);
+                            getWebsite2();
+                        }
+                        if (mosqueKey == 3) {
+                            spinner.setSelection(mosqueKey, true);
+                            getWebsite3();
+                        }
+
+                        dialog.dismiss();
+
+                    } else {
+                        Toast.makeText(MainActivity.this, "NO INTERNET", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
         }
-        if (mosqueKey == 1) {
-            spinner.setSelection(mosqueKey,true);
-            getWebsite1();
-        }
-        if (mosqueKey == 2) {
-            spinner.setSelection(mosqueKey,true);
-            getWebsite2();
-        }
-        if (mosqueKey == 3) {
-            spinner.setSelection(mosqueKey,true);
-            getWebsite3();
-        }
+
+
+        btnContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto","pcbabu03@gmail.com", null));
+                intent.putExtra(Intent.EXTRA_SUBJECT, "More mosque request.");
+                intent.putExtra(Intent.EXTRA_TEXT, "please add this mosque: ");
+                startActivity(Intent.createChooser(intent, "Choose an Email client :"));
+            }
+        });
+
+        btnDonate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "COMING SOON", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
@@ -468,14 +547,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
             int mosqueKey = preferences.getInt("mosque", 0);
 
+            if(ConnectivityReceiver.isConnected()){
+                if (mosqueKey == 0) getWebsite0();
+                if (mosqueKey == 1) getWebsite1();
+                if (mosqueKey == 2) getWebsite2();
+                if (mosqueKey == 3) getWebsite3();
 
-            if (mosqueKey == 0) getWebsite0();
-            if (mosqueKey == 1) getWebsite1();
-            if (mosqueKey == 2) getWebsite2();
-            if (mosqueKey == 3) getWebsite3();
+                Toast.makeText(this, "Syncing online...", Toast.LENGTH_LONG).show();
+            }else{
 
+                Toast.makeText(this, "NO INTERNET", Toast.LENGTH_LONG).show();
+            }
 
-            Toast.makeText(this, "Syncing online...", Toast.LENGTH_LONG).show();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -486,40 +569,54 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         if (position == 0) {
 
-            getWebsite0();
+            if (ConnectivityReceiver.isConnected()) {
+                getWebsite0();
 
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putInt("mosque", 0);
-            editor.apply();
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("mosque", 0);
+                editor.apply();
+            } else {
+                Toast.makeText(this, "No Internet", Toast.LENGTH_SHORT).show();
+            }
         }
         if (position == 1) {
 
-            getWebsite1();
+            if (ConnectivityReceiver.isConnected()) {
+                getWebsite1();
 
 
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putInt("mosque", 1);
-            editor.apply();
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("mosque", 1);
+                editor.apply();
+            } else {
+                Toast.makeText(this, "No Internet", Toast.LENGTH_SHORT).show();
+            }
         }
         if (position == 2) {
+            if (ConnectivityReceiver.isConnected()) {
+                getWebsite2();
 
-            getWebsite2();
-
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putInt("mosque", 2);
-            editor.apply();
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("mosque", 2);
+                editor.apply();
+            } else {
+                Toast.makeText(this, "No Internet", Toast.LENGTH_SHORT).show();
+            }
         }
         if (position == 3) {
+            if (ConnectivityReceiver.isConnected()) {
+                getWebsite3();
 
-            getWebsite3();
-
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putInt("mosque", 3);
-            editor.apply();
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("mosque", 3);
+                editor.apply();
+            } else {
+                Toast.makeText(this, "No Internet", Toast.LENGTH_SHORT).show();
+            }
         } else {
             //do nothing
         }
