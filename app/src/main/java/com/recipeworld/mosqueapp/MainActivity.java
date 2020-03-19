@@ -1,6 +1,7 @@
 package com.recipeworld.mosqueapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity{
 
         //calling the website by default
 
-        getWebsite();
+        getWebsite2();
 
     }
 
@@ -111,6 +112,80 @@ public class MainActivity extends AppCompatActivity{
                         tvIshaIqamah.setText(col1.get(4));
                         tvJumaIqamah.setText(col1.get(5));
                         tvNote.setText(col0.get(col0.size() - 1));
+
+
+                    }
+                });
+            }
+        }).start();
+    }
+
+
+
+    private void getWebsite2() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final StringBuilder builder = new StringBuilder();
+
+                try {
+                    Document doc = Jsoup.connect("https://www.mapsredmond.org/").get();
+                    Element table = doc.getElementsByTag("tbody").get(0);
+//                    Log.d("doc",String.valueOf(table));
+
+                    Elements rows = table.select("tr");
+
+                    for (int i = 2; i < rows.size(); i++) { //first row is the col names so skip it.
+                        Element row = rows.get(i);
+                        Elements cols = row.select("td");
+
+                        for (int k = 0; k < cols.size(); k++) {
+                            if (k == 0)
+                                col0.add(cols.get(k).text());
+                            if (k == 1)
+                                col1.add(cols.get(k).text());
+                            if (k == 2)
+                                col2.add(cols.get(k).text());
+                        }
+
+                    }
+
+                    Log.d("rr",String.valueOf(col0.size()));
+                        for(String x: col0)
+                            Log.d("rr",x);
+                    Log.d("rr",String.valueOf(col1.size()));
+                        for(String x: col1)
+                            Log.d("rr",x);
+                    Log.d("rr",String.valueOf(col2.size()));
+                        for(String x: col2)
+                            Log.d("rr",x);
+
+                } catch (IOException e) {
+                    builder.append("Error : ").append(e.getMessage()).append("\n");
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        tvFajrAzan.setText(col0.get(0));
+                        tvSunrise.setText("SUNRISE: " + col0.get(1));
+                        tvDuhrAzan.setText(col0.get(2));
+                        tvAsrAzan.setText(col0.get(3));
+                        tvAsrAzanHanafi.setText(col0.get(3));
+                        tvMaghribAzan.setText(col0.get(4));
+                        tvIshaAzan.setText(col0.get(5));
+                        tvJumaAzan.setText(col0.get(6));
+
+                        tvFajrIqamah.setText(col1.get(0));
+                        tvDuhrIqamah.setText(col1.get(1));
+                        tvAsrIqamah.setText(col1.get(2));
+                        tvMaghribIqamah.setText(col1.get(3));
+                        tvIshaIqamah.setText(col1.get(4));
+
+                        if(col1.size()>5)
+                        tvJumaIqamah.setText(col1.get(5));
 
 
                     }
