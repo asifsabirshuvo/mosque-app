@@ -89,8 +89,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         List<String> categories = new ArrayList<String>();
         categories.add("Masjeed Madeena");
         categories.add("Sammamaish");
-        categories.add("Mapsred");
+        categories.add("MAPS");
         categories.add("Eastside mosque");
+        categories.add("Redmondmosque");
+        categories.add("Gulshan central mosque");
+
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
         // Drop down layout style - list view with radio button
@@ -119,6 +122,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             if (mosqueKey == 3) {
                 spinner.setSelection(mosqueKey, true);
                 getWebsite3();
+            }
+            if (mosqueKey == 4) {
+                spinner.setSelection(mosqueKey, true);
+                getWebsite4();
+            }
+            if (mosqueKey == 5) {
+                spinner.setSelection(mosqueKey, true);
+                getWebsite5();
             }
         } else {
 
@@ -153,6 +164,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         if (mosqueKey == 3) {
                             spinner.setSelection(mosqueKey, true);
                             getWebsite3();
+                        }
+                        if (mosqueKey == 4) {
+                            spinner.setSelection(mosqueKey, true);
+                            getWebsite4();
+                        }
+                        if (mosqueKey == 5) {
+                            spinner.setSelection(mosqueKey, true);
+                            getWebsite5();
                         }
 
                         dialog.dismiss();
@@ -193,7 +212,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         col0 = new ArrayList<>();
         col1 = new ArrayList<>();
         col2 = new ArrayList<>();
+//clearing holding texts
+        tvFajrAzan.setText("");
+        tvSunrise.setText("");
+        tvDuhrAzan.setText("");
+        tvAsrAzan.setText("");
+        tvAsrAzanHanafi.setText("");
+        tvMaghribAzan.setText("");
+        tvIshaAzan.setText("");
+        tvJumaAzan.setText("");
 
+        tvFajrIqamah.setText("");
+        tvDuhrIqamah.setText("");
+        tvAsrIqamah.setText("");
+        tvMaghribIqamah.setText("");
+        tvIshaIqamah.setText("");
+        tvJumaIqamah.setText("");
 
         new Thread(new Runnable() {
             @Override
@@ -266,7 +300,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         col0 = new ArrayList<>();
         col1 = new ArrayList<>();
         col2 = new ArrayList<>();
+//clearing holding texts
+        tvFajrAzan.setText("");
+        tvSunrise.setText("");
+        tvDuhrAzan.setText("");
+        tvAsrAzan.setText("");
+        tvAsrAzanHanafi.setText("");
+        tvMaghribAzan.setText("");
+        tvIshaAzan.setText("");
+        tvJumaAzan.setText("");
 
+        tvFajrIqamah.setText("");
+        tvDuhrIqamah.setText("");
+        tvAsrIqamah.setText("");
+        tvMaghribIqamah.setText("");
+        tvIshaIqamah.setText("");
+        tvJumaIqamah.setText("");
         pb.setVisibility(View.VISIBLE);
 
         new Thread(new Runnable() {
@@ -349,6 +398,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         col1 = new ArrayList<>();
         col2 = new ArrayList<>();
 
+        //clearing holding texts
+        tvFajrAzan.setText("");
+        tvSunrise.setText("");
+        tvDuhrAzan.setText("");
+        tvAsrAzan.setText("");
+        tvAsrAzanHanafi.setText("");
+        tvMaghribAzan.setText("");
+        tvIshaAzan.setText("");
+        tvJumaAzan.setText("");
+
+        tvFajrIqamah.setText("");
+        tvDuhrIqamah.setText("");
+        tvAsrIqamah.setText("");
+        tvMaghribIqamah.setText("");
+        tvIshaIqamah.setText("");
+        tvJumaIqamah.setText("");
         pb.setVisibility(View.VISIBLE);
 
         new Thread(new Runnable() {
@@ -432,6 +497,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         col1 = new ArrayList<>();
         col2 = new ArrayList<>();
 
+        //clearing holding texts
+        tvFajrAzan.setText("");
+        tvSunrise.setText("");
+        tvDuhrAzan.setText("");
+        tvAsrAzan.setText("");
+        tvAsrAzanHanafi.setText("");
+        tvMaghribAzan.setText("");
+        tvIshaAzan.setText("");
+        tvJumaAzan.setText("");
+
+        tvFajrIqamah.setText("");
+        tvDuhrIqamah.setText("");
+        tvAsrIqamah.setText("");
+        tvMaghribIqamah.setText("");
+        tvIshaIqamah.setText("");
+        tvJumaIqamah.setText("");
         final ArrayList<String> nt = new ArrayList<>();
 
 
@@ -529,6 +610,231 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
 
+    //redmond mosque
+    private void getWebsite4() {
+
+//clearing prev data
+        col0 = new ArrayList<>();
+        col1 = new ArrayList<>();
+        col2 = new ArrayList<>();
+
+        //clearing holding texts
+        tvFajrAzan.setText("");
+        tvSunrise.setText("");
+        tvDuhrAzan.setText("");
+        tvAsrAzan.setText("");
+        tvAsrAzanHanafi.setText("");
+        tvMaghribAzan.setText("");
+        tvIshaAzan.setText("");
+        tvJumaAzan.setText("");
+
+        tvFajrIqamah.setText("");
+        tvDuhrIqamah.setText("");
+        tvAsrIqamah.setText("");
+        tvMaghribIqamah.setText("");
+        tvIshaIqamah.setText("");
+        tvJumaIqamah.setText("");
+        final ArrayList<String> nonHana = new ArrayList<>();
+
+        pb.setVisibility(View.VISIBLE);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final StringBuilder builder = new StringBuilder();
+
+                try {
+                    Document doc = Jsoup.connect("https://www.redmondmosque.org").get();
+                    Element table = doc.getElementsByTag("tbody").get(0);
+//                    Log.d("doc",String.valueOf(table));
+
+                    Element nonHanafi  = doc.getElementsByClass("dpt_start").get(0);
+                    nonHana.add(nonHanafi.text());
+
+
+                    Elements rows = table.select("tr");
+
+                    for (int i = 1; i < rows.size(); i++) { //first row is the col names so skip it.
+                        Element row = rows.get(i);
+                        Elements cols = row.select("td");
+
+                        for (int k = 0; k < cols.size(); k++) {
+                            if (k == 0)
+                                col0.add(cols.get(k).text());
+                            if (k == 1)
+                                col1.add(cols.get(k).text());
+                            if (k == 2)
+                                col2.add(cols.get(k).text());
+                        }
+
+                    }
+
+
+
+                } catch (IOException e) {
+                    builder.append("Error : ").append(e.getMessage()).append("\n");
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        Log.d("rr", String.valueOf(col0.size()));
+                        for (String x : col0)
+                            Log.d("rr", x);
+                        Log.d("rr", String.valueOf(col1.size()));
+                        for (String x : col1)
+                            Log.d("rr", x);
+                        Log.d("rr", String.valueOf(col2.size()));
+                        for (String x : col2)
+                            Log.d("rr", x);
+
+                        pb.setVisibility(View.INVISIBLE);
+
+                        try{
+                            tvFajrAzan.setText(col0.get(0));
+                            tvSunrise.setText("SUNRISE: " + col0.get(1));
+                            tvDuhrAzan.setText(col0.get(2));
+                            tvAsrAzan.setText(nonHana.get(0)); //
+                            tvAsrAzanHanafi.setText(col0.get(3));
+                            tvMaghribAzan.setText(col0.get(4));
+                            tvIshaAzan.setText(col0.get(5));
+                            tvJumaAzan.setText("see note");
+
+                            tvFajrIqamah.setText(col1.get(0));
+                            tvDuhrIqamah.setText(col1.get(1));
+                            tvAsrIqamah.setText(col1.get(2));
+                            tvMaghribIqamah.setText(col1.get(3));
+                            tvIshaIqamah.setText(col1.get(4));
+                            tvJumaIqamah.setText("see note");
+
+                            tvNote.setVisibility(View.VISIBLE);
+                            tvNote.setText("Visit website monthly schedule.");
+                        }catch (Exception e){
+
+                            Toast.makeText(MainActivity.this, "Trouble getting remondmosque data!", Toast.LENGTH_SHORT).show();
+                            getWebsite0();
+                            spinner.setSelection(0,true);
+                            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putInt("mosque", 0);
+                            editor.apply();
+                        }
+
+
+                    }
+                });
+            }
+        }).start();
+    }
+
+
+    //gulshan mosque
+    private void getWebsite5() {
+//clearing prev data
+        col0 = new ArrayList<>();
+        col1 = new ArrayList<>();
+        col2 = new ArrayList<>();
+
+//clearing holding texts
+        tvFajrAzan.setText("");
+        tvSunrise.setText("");
+        tvDuhrAzan.setText("");
+        tvAsrAzan.setText("");
+        tvAsrAzanHanafi.setText("");
+        tvMaghribAzan.setText("");
+        tvIshaAzan.setText("");
+        tvJumaAzan.setText("");
+
+        tvFajrIqamah.setText("");
+        tvDuhrIqamah.setText("");
+        tvAsrIqamah.setText("");
+        tvMaghribIqamah.setText("");
+        tvIshaIqamah.setText("");
+        tvJumaIqamah.setText("");
+
+
+        pb.setVisibility(View.VISIBLE);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final StringBuilder builder = new StringBuilder();
+
+                try {
+                    Document doc = Jsoup.connect("http://gcmisbd.org").get();
+                    Element table = doc.getElementsByTag("tbody").get(1);
+//                    Log.d("doc",String.valueOf(table));
+
+                    Elements rows = table.select("tr");
+
+
+                    for (int i = 1; i < rows.size(); i++) { //first row is the col names so skip it.
+                        Element row = rows.get(i);
+                        Elements cols = row.select("td");
+
+                        for (int k = 0; k < cols.size(); k++) {
+                            if (k == 0)
+                                col0.add(cols.get(k).text());
+                            if (k == 1)
+                                col1.add(cols.get(k).text());
+                            if (k == 2)
+                                col2.add(cols.get(k).text());
+                        }
+
+                    }
+
+
+
+                } catch (IOException e) {
+                    builder.append("Error : ").append(e.getMessage()).append("\n");
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        Log.d("rr", String.valueOf(col0.size()));
+                        for (String x : col0)
+                            Log.d("rr", x);
+                        Log.d("rr", String.valueOf(col1.size()));
+                        for (String x : col1)
+                            Log.d("rr", x);
+                        Log.d("rr", String.valueOf(col2.size()));
+                        for (String x : col2)
+                            Log.d("rr", x);
+
+
+                        pb.setVisibility(View.INVISIBLE);
+
+                        tvFajrAzan.setText(col1.get(0));
+                        tvSunrise.setText("SUNRISE: " + "not available");
+                        tvDuhrAzan.setText(col1.get(1));
+                        tvAsrAzan.setText(col1.get(2));
+                        tvAsrAzanHanafi.setText(col1.get(2));
+                        tvMaghribAzan.setText(col1.get(3));
+                        tvIshaAzan.setText(col1.get(4));
+                        tvJumaAzan.setText(col1.get(5));
+
+                        tvFajrIqamah.setText(col2.get(0));
+                        tvDuhrIqamah.setText(col2.get(1));
+                        tvAsrIqamah.setText(col2.get(2));
+                        tvMaghribIqamah.setText(col2.get(3));
+                        tvIshaIqamah.setText(col2.get(4));
+                        tvJumaIqamah.setText(col2.get(5));
+
+                        tvNote.setVisibility(View.GONE);
+                    }
+                });
+            }
+        }).start();
+    }
+
+
+
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -552,6 +858,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 if (mosqueKey == 1) getWebsite1();
                 if (mosqueKey == 2) getWebsite2();
                 if (mosqueKey == 3) getWebsite3();
+                if (mosqueKey == 4) getWebsite4();
+                if (mosqueKey == 5) getWebsite5();
 
                 Toast.makeText(this, "Syncing online...", Toast.LENGTH_LONG).show();
             }else{
@@ -617,7 +925,32 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             } else {
                 Toast.makeText(this, "No Internet", Toast.LENGTH_SHORT).show();
             }
-        } else {
+        }
+        if (position == 4) {
+            if (ConnectivityReceiver.isConnected()) {
+                getWebsite4();
+
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("mosque", 4);
+                editor.apply();
+            } else {
+                Toast.makeText(this, "No Internet", Toast.LENGTH_SHORT).show();
+            }
+        }
+        if (position == 5) {
+            if (ConnectivityReceiver.isConnected()) {
+                getWebsite5();
+
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("mosque", 5);
+                editor.apply();
+            } else {
+                Toast.makeText(this, "No Internet", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else {
             //do nothing
         }
     }
