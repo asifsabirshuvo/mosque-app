@@ -443,7 +443,7 @@
             android:layout_marginTop="10dp"
             android:weightSum="2"
             android:layout_marginRight="2dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/donate"
@@ -455,7 +455,7 @@
                 android:background="@android:color/holo_blue_dark"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="DONATE" />
+                android:text="DONATE THIS APP" />
             <Button
                 android:id="@+id/contact"
                 android:layout_width="match_parent"
@@ -466,7 +466,7 @@
                 android:background="@android:color/holo_red_dark"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="CONTACT" />
+                android:text="CONTACT US" />
 
         </LinearLayout>
 
