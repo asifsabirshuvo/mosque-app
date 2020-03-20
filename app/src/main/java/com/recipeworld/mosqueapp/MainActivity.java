@@ -199,7 +199,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         btnDonate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "COMING SOON", Toast.LENGTH_SHORT).show();
+
+                Uri uri = Uri.parse("https://paypal.me/pcbabu"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
     }

@@ -25,18 +25,17 @@
             />
 
         <Spinner
+            android:id="@+id/spinner_mosque"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_marginBottom="10dp"
-            android:id="@+id/spinner_mosque"
-            android:gravity="center"
-            android:spinnerMode="dropdown"
-            android:textAlignment="center"
             android:background="@android:color/white"
-            android:padding="4dp"
-            />
+            android:gravity="center"
+            android:padding="10dp"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center" />
         <!--fajr-->
         <LinearLayout
             android:layout_width="match_parent"
@@ -456,17 +455,18 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="DONATE THIS APP" />
+
             <Button
                 android:id="@+id/contact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:textColor="@android:color/white"
                 android:layout_weight="1"
                 android:background="@android:color/holo_red_dark"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="CONTACT US" />
+                android:text="CONTACT US"
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
 
